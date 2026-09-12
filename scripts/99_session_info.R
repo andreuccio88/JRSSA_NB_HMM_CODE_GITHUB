@@ -1,0 +1,17 @@
+ROOT <- normalizePath(getwd(), winslash = "/", mustWork = TRUE)
+out <- file.path(ROOT, "output", "session_info.txt")
+dir.create(dirname(out), recursive = TRUE, showWarnings = FALSE)
+zz <- file(out, open = "wt")
+sink(zz); on.exit({sink(); close(zz)}, add = TRUE)
+cat("R version\n")
+print(R.version.string)
+cat("\nPlatform\n")
+print(R.version$platform)
+cat("\nSession information\n")
+print(sessionInfo())
+if (requireNamespace("cmdstanr", quietly = TRUE)) {
+  cat("\nCmdStanR\n")
+  print(as.character(utils::packageVersion("cmdstanr")))
+  cat("\nCmdStan\n")
+  print(tryCatch(as.character(cmdstanr::cmdstan_version()), error = function(e) NA_character_))
+}
