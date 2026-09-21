@@ -1,0 +1,104 @@
+project:
+  title: Hierarchical cohort change points in multi-population mortality
+  version: 7.0.0-light-changepoint
+paths:
+  real_full: results/real_data/full
+  real_share: results/real_data/share
+analysis_spec:
+  target_mask_start: 1925
+  target_mask_end: 1935
+  support_shift_cohorts: 5
+  cohort_smoothness_sigma: 0.03
+  smooth_B_cohort: 6
+data:
+  dx_file: data/HMD_Dx.RData
+  ex_file: data/HMD_Ex.RData
+  series_metadata: config/series_metadata.csv
+  oecd_universe: config/longstanding_oecd_universe.csv
+  year_min: 1930
+  year_max: 2019
+  age_min: 20
+  age_max: 89
+  age_step: 5
+  period_step: 5
+  cohort_step: 5
+  min_calendar_years: 60
+  min_quinquennial_periods: 12
+  min_supported_cohorts: 12
+  min_age_groups_per_supported_cohort: 4
+  min_complete_cell_fraction: 0.95
+  expected_selected_populations: 21
+model:
+  # v7-light primary model
+  B_age: 8
+  B_age_deviation: 5
+  B_period: 6
+  B_regime: 6
+  baseline_country_level_prior_sd: 0.35
+  baseline_country_shape_prior_sd: 0.06
+  baseline_global_rw2_prior_sd: 0.25
+  drift_global_prior_sd: 0.18
+  drift_country_deviation_prior_sd: 0.06
+  period_global_prior_sd: 0.10
+  period_country_deviation_prior_sd: 0.035
+  regime_range_prior_sd: 0.30
+  regime_global_shape_prior_sd: 0.12
+  country_regime_level_prior_sd: 0.08
+  switch_reference_year: 1900
+  switch_center_prior_sd_intervals: 20
+  switch_sd_prior_intervals: 8
+  switch_sd_floor_intervals: 0.25
+  numerical_floor_phi: 0.05
+  numerical_floor_baseline_rw2_sd: 0.005
+  # fields retained only to build the separate smooth-cohort comparator
+  K: 2
+  B_cohort: 6
+  B_regime_deviation: 4
+  drift_country_sd_prior: 0.06
+  cohort_global_prior_sd: 0.18
+  cohort_country_deviation_prior_sd: 0.05
+  cohort_smoothness_sigma: 0.03
+  country_regime_level_sd_prior: 0.08
+  country_regime_shape_sd_prior: 0.05
+  initial_occupancy_global_prior_sd: 1.25
+  initial_occupancy_country_sd_prior: 0.75
+  duration_prior_mean_intervals: 5
+  duration_prior_log_sd: 0.65
+  duration_country_sd_prior: 0.25
+  duration_support_multiplier: 2.0
+  duration_support_min_intervals: 60
+  numerical_floor_duration_country_sd: 0.001
+  numerical_floor_duration_dispersion: 0.05
+sampling:
+  chains: 4
+  parallel_chains: 4
+  refresh: 20
+  seed: 20260901
+  save_cmdstan_csv: true
+  threads_per_chain: 2
+  v7_iter_warmup: 600
+  v7_iter_sampling: 600
+  v7_adapt_delta: 0.93
+  v7_max_treedepth: 11
+sampling_by_model:
+  Smooth:
+    iter_warmup: 600
+    iter_sampling: 600
+    adapt_delta: 0.95
+    initial_step_size: 0.03
+    max_treedepth: 12
+quality_control:
+  bfmi_threshold: 0.30
+  hard_rhat_threshold: 1.03
+  hard_min_bulk_ess: 200
+  hard_min_tail_ess: 200
+  reporting_rhat_threshold: 1.01
+  reporting_min_bulk_ess: 400
+  reporting_min_tail_ess: 400
+  max_treedepth_allowed: 0
+runtime:
+  prevent_nested_threading: true
+  future_globals_max_gb: 8
+  stan_reduce_grainsize: 1
+  stan_smooth_reduce_grainsize: 64
+  stan_threads_max_per_chain: 6

@@ -1,0 +1,51 @@
+hmd_code,population,primary_series,series_note
+AUS,Australia,1,primary total population
+AUT,Austria,1,primary total population
+BEL,Belgium,1,primary total population
+BGR,Bulgaria,1,primary total population
+BLR,Belarus,1,primary total population
+CAN,Canada,1,primary total population
+CHL,Chile,1,primary total population
+HRV,Croatia,1,primary total population
+CHE,Switzerland,1,primary total population
+CZE,Czechia,1,primary total population
+DEUTNP,Germany,1,primary total population; short unified series screened by data support
+DEUTE,East Germany,0,alternative historical partition; overlaps the German population series
+DEUTW,West Germany,0,alternative historical partition; overlaps the German population series
+DNK,Denmark,1,primary total population
+ESP,Spain,1,primary total population
+EST,Estonia,1,primary total population
+FIN,Finland,1,primary total population
+FRATNP,France,1,primary total population
+FRACNP,France civilian population,0,alternative civilian series; overlaps France total population
+GRC,Greece,1,primary total population
+HUN,Hungary,1,primary total population
+HKG,Hong Kong,1,primary HMD area population
+IRL,Ireland,1,primary total population
+ISL,Iceland,1,primary total population
+ISR,Israel,1,primary total population
+ITA,Italy,1,primary total population
+JPN,Japan,1,primary total population
+KOR,Republic of Korea,1,primary total population
+LTU,Lithuania,1,primary total population
+LUX,Luxembourg,1,primary total population
+LVA,Latvia,1,primary total population
+NLD,Netherlands,1,primary total population
+NOR,Norway,1,primary total population
+NZL_NP,New Zealand,1,primary total population
+NZL_MA,New Zealand Maori,0,ethnic subgroup; overlaps New Zealand total population
+NZL_NM,New Zealand non-Maori,0,ethnic subgroup; overlaps New Zealand total population
+POL,Poland,1,primary total population
+PRT,Portugal,1,primary total population
+RUS,Russia,1,primary total population
+SVK,Slovakia,1,primary total population
+SVN,Slovenia,1,primary total population
+SWE,Sweden,1,primary total population
+TWN,Taiwan,1,primary HMD area population
+UKR,Ukraine,1,primary total population
+GBR_NP,United Kingdom,1,primary total population
+GBRTENW,England and Wales total population,0,constituent population; overlaps United Kingdom total population
+GBRCENW,England and Wales civilian population,0,constituent/civilian population; overlaps United Kingdom total population
+GBR_SCO,Scotland,0,constituent population; overlaps United Kingdom total population
+GBR_NIR,Northern Ireland,0,constituent population; overlaps United Kingdom total population
+USA,United States,1,primary total population

@@ -1,0 +1,17 @@
+rm(list=ls(all.names=TRUE)); gc()
+ROOT <- normalizePath(getwd(), winslash='/', mustWork=TRUE)
+source(file.path(ROOT,'R','project_loader.R'), local=FALSE)
+source_project_files(ROOT); assert_project_api(); load_project_packages()
+cfg <- read_project_config(file.path(ROOT,'config','default.yml'), ROOT)
+configure_runtime(cfg)
+scfg <- smooth_config(cfg, 'masked_target_1925_1935')
+scfg$mask_window <- list(enabled=TRUE,
+                         start=as.integer(cfg$analysis_spec$target_mask_start),
+                         end=as.integer(cfg$analysis_spec$target_mask_end))
+dat <- prepare_mortality_data(scfg)
+base_pack <- build_stan_data(dat, scfg)
+pack <- build_smooth_benchmark_data(base_pack, scfg)
+fit <- fit_smooth_cohort_benchmark(pack, scfg)
+saveRDS(pack, file.path(scfg$output_dir,'stan_pack.rds'))
+summarise_smooth_diagnostics(fit, scfg, pack, 'smooth_masked')
+summarise_smooth_masked_v7(fit, pack, scfg$output_dir)
